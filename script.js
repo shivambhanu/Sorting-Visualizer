@@ -31,10 +31,10 @@ async function bubbleSort(){
             const bar2 = bars[j+1];
 
             
-            bar1.style.backgroundColor = "#e74c3c";
-            bar2.style.backgroundColor = "#e74c3c";
+            bar1.style.backgroundColor = "red";
+            bar2.style.backgroundColor = "red";
 
-            await new Promise(resolve => setTimeout(resolve, 100));
+            await new Promise(resolve => setTimeout(resolve, 20));
 
             const height1 = parseInt(bar1.style.height);
             const height2 = parseInt(bar2.style.height);
@@ -44,8 +44,8 @@ async function bubbleSort(){
                 bar2.style.height = `${height1}px`;
             }
 
-            bar1.style.backgroundColor = "#3498db";
-            bar2.style.backgroundColor = "#3498db";
+            bar1.style.backgroundColor = "black";
+            bar2.style.backgroundColor = "black";
         }
     }
 }

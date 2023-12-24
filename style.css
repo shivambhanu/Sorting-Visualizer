@@ -20,7 +20,7 @@ body {
 
 
 .bar {
-    background-color: #3498db;
+    background-color: black;
     width: 20px;
     /* flex: 1; */
     margin: 0 2px;
