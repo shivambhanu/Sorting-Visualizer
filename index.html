@@ -8,42 +8,14 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="array-container"></div>
-    <button class="btn btn-primary col-1" onclick="sortArray()">Sort</button>
-
-    <script>
-        // Create an array of 100 random integers
-        function generateArray(size) {
-            const array = []
-            for(var i = 0; i < size; i++){
-                array.push(Math.floor(Math.random()*100) + 1);
-            }
-            return array;
-        }
-
-        // A function to render the array bars
-        function renderArray(array) {
-            const container = document.getElementById("array-container");
-            container.innerHTML = "";
-            for(var value of array) {
-                const bar = document.createElement("div");
-                bar.className = "array-bar";
-                bar.style.height = `${value * 3}px`
-                container.appendChild(bar);
-            }
-        }
-
-
-        // Algorithm: Bubble-Sort
-        async function bubbleSort(array) {
-            const n = array.length;
-            // for(var i = 0; i < n-1; i++){
-            //     for(var)
-            // }
-        }
-    </script>
-
-    
+    <div class="container">
+        <h1>Sorting Visualizer</h1>
+        <div id="array-container"></div>
+        <button onclick="generateArray()">Generate New Array</button>
+        <button onclick="bubbleSort()">Bubble Sort</button>
+    </div>
+    <script src="script.js"></script>
+    <!-- Bootstrapp CDN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
