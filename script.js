@@ -21,3 +21,31 @@ function generateArray(){
 }
 
 
+async function bubbleSort(){
+    const arrayContainer = document.getElementById("array-container");
+    const bars = arrayContainer.children;
+
+    for(let i = 0; i < bars.length; i++){
+        for(let j = 0; j < bars.length - i - 1; j++){
+            const bar1 = bars[j];
+            const bar2 = bars[j+1];
+
+            
+            bar1.style.backgroundColor = "#e74c3c";
+            bar2.style.backgroundColor = "#e74c3c";
+
+            await new Promise(resolve => setTimeout(resolve, 100));
+
+            const height1 = parseInt(bar1.style.height);
+            const height2 = parseInt(bar2.style.height);
+
+            if(height1 > height2){
+                bar1.style.height = `${height2}px`;
+                bar2.style.height = `${height1}px`;
+            }
+
+            bar1.style.backgroundColor = "#3498db";
+            bar2.style.backgroundColor = "#3498db";
+        }
+    }
+}
