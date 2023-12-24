@@ -1,0 +1,22 @@
+body {
+    display: flex;
+    align-items : center; /*used to vertically center*/
+    justify-content: center; /*used to horizontally center*/
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+
+#array-container {
+    display: flex;
+    gap: 2px;
+}
+
+
+.array-bar {
+    background-color: #3498db;
+    flex: 1;
+    margin: 0 1px;
+    transition: background-color 0.2s;
+}
