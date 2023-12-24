@@ -1,29 +1,23 @@
 body {
     display: flex;
-    align-items : center; /*used to vertically center*/
-    justify-content: center; /*used to horizontally center*/
+    justify-content: center;
     height: 100vh;
     margin: 0;
 }
-
 
 .container {
     text-align: center;
 }
 
-
 #array-container {
     display: flex;
     justify-content: center;
+    align-items: flex-end; /* Align items to the bottom */
     margin-top: 20px;
 }
 
-
 .bar {
-    background-color: black;
     width: 20px;
-    /* flex: 1; */
-    margin: 0 2px;
-    display: inline-block;
-    /* transition: background-color 0.2s; */
+    margin: 2px;
+    background-color: black;
 }
