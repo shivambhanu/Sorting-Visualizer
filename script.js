@@ -90,6 +90,36 @@ async function insertionSort() {
 }
 
 
+async function selectionSort() {
+    const arrayContainer = document.getElementById("array-container");
+    const bars = arrayContainer.children;
+
+    for(let i = 0; i < bars.length; i++) {
+        let min_val_idx = i;
+        for(let j = i+1; j < bars.length; j++) {
+            bars[j].style.backgroundColor = "red";
+
+            if(parseInt(bars[j].style.height) < parseInt(bars[min_val_idx].style.height)){
+                min_val_idx = j
+            }
+
+            let speed = document.getElementById("speed-input").value;
+            await new Promise(resolve => (setTimeout(resolve, 100-speed)));
+
+            bars[j].style.backgroundColor = "black";
+        }
+
+        const temp_height = bars[i].style.height;
+        bars[i].style.height = bars[min_val_idx].style.height;
+        bars[min_val_idx].style.height = temp_height;
+
+        //Changing bar-labels
+        const temp_text = bars[i].querySelector(".bar-label").textContent;
+        bars[i].querySelector(".bar-label").textContent = bars[min_val_idx].querySelector(".bar-label").textContent;
+        bars[min_val_idx].querySelector(".bar-label").textContent = temp_text;
+    }
+}
+
 
 
 
