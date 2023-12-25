@@ -18,6 +18,12 @@ function generateArray(){
         const bar = document.createElement("div");
         bar.style.height = `${array[i]}px`;
         bar.className = "bar";
+        
+        const bar_label = document.createElement("div");
+        bar_label.className = "bar-label";
+        bar_label.textContent = array[i];
+        bar.appendChild(bar_label);
+
         arrayContainer.appendChild(bar);
     }
 }
@@ -45,6 +51,10 @@ async function bubbleSort(){
             if(height1 > height2){
                 bar1.style.height = `${height2}px`;
                 bar2.style.height = `${height1}px`;
+
+                const temp_label = bar1.querySelector(".bar-label").textContent;
+                bar1.querySelector(".bar-label").textContent = bar2.querySelector(".bar-label").textContent;
+                bar2.querySelector(".bar-label").textContent = temp_label;
             }
 
             bar1.style.backgroundColor = "black";
