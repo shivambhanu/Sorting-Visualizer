@@ -7,8 +7,10 @@ function generateArray(){
     const arrayContainer = document.getElementById("array-container");
     arrayContainer.innerHTML = "";
 
+    let size = document.getElementById("array-size").value;
+
     const array = [];
-    for(let i = 0; i < 30; i++){
+    for(let i = 0; i < size; i++){
         array.push(randomInt(10, 300));
     }
 
