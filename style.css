@@ -21,3 +21,36 @@ body {
     margin: 2px;
     background-color: black;
 }
+
+
+
+/* creating a custom slider */
+.array-size {
+    align-items: center;
+    justify-content: center;
+}
+
+.sort-speed {
+    align-items: center;
+    justify-content: center;
+}
+
+.slider {
+    padding: 5px 5px;
+}
+
+.slider-text {
+    font-size: 15px;
+    font-weight: 600;
+    color: #0d6efd;
+    padding-bottom: 6px;
+}
+
+.slider-value {
+    font-size: 15px;
+    font-weight: 600;
+    color: #0d6efd;
+    padding-bottom: 4px;
+}
+
+

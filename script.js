@@ -7,7 +7,7 @@ function generateArray(){
     const arrayContainer = document.getElementById("array-container");
     arrayContainer.innerHTML = "";
 
-    let size = document.getElementById("array-size").value;
+    let size = document.getElementById("size-input").value;
 
     const array = [];
     for(let i = 0; i < size; i++){
@@ -36,7 +36,7 @@ async function bubbleSort(){
             bar1.style.backgroundColor = "red";
             bar2.style.backgroundColor = "red";
 
-            let speed = document.getElementById("sort-speed").value;
+            let speed = document.getElementById("speed-input").value;
             await new Promise(resolve => setTimeout(resolve, 100-speed));
 
             const height1 = parseInt(bar1.style.height);
@@ -51,4 +51,22 @@ async function bubbleSort(){
             bar2.style.backgroundColor = "black";
         }
     }
+}
+
+
+
+// Code for sliders
+let size_slider = document.getElementById("size-input");
+let size_text_val = document.getElementsByClassName("slider-value")[0];
+size_text_val.textContent = size_slider.value;
+size_slider.oninput = function() {
+    size_text_val.textContent = this.value;
+};
+
+
+let speed_slider = document.getElementById("speed-input");
+let speed_text_val = document.getElementsByClassName("slider-value")[1];
+speed_text_val.textContent = speed_slider.value;
+speed_slider.oninput = function() {
+    speed_text_val.textContent = this.value;
 }
