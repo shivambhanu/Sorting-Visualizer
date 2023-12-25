@@ -64,35 +64,28 @@ async function bubbleSort() {
 }
 
 
+
 async function insertionSort() {
     const arrayContainer = document.getElementById("array-container");
     const bars = arrayContainer.children;
-
     for(let i = 1; i < bars.length; i++) {
-        let j = i - 1;
-
-        const curr_bar = bars[i];
-        bars[i].style.backgroundColor = "red";
-        const curr_bar_height = parseInt(curr_bar.style.height);
-
-        while(j >= 0 && curr_bar_height < parseInt(bars[j].style.height)) {
-            let prev_bar_height = parseInt(bars[j].style.height);
-            bars[j+1].style.backgroundColor = "green";
-            bars[j].style.backgroundColor = "green";
+        let j = i-1;
+        const key_bar_height = parseInt(bars[i].style.height);
+        const key_bar_textcontent = bars[i].querySelector(".bar-label").textContent;
+        while(j >= 0 && key_bar_height < parseInt(bars[j].style.height)) {
+            bars[j].style.backgroundColor = "red";
 
             let speed = document.getElementById("speed-input").value;
-            await new Promise(resolve => setTimeout(resolve, 100-speed))
-            bars[j+1].style.height = `${prev_bar_height}px`;
+            await new Promise(resolve => setTimeout(resolve, 100-speed));
 
-            //Changing bar-labels
-            // bars[j+1].querySelector(".bar-label").textContent = bars[j].querySelector(".bar-label").textContent
-            bars[j+1].style.backgroundColor = "black";
+            bars[j+1].style.height = bars[j].style.height;
+            bars[j+1].querySelector(".bar-label").textContent = bars[j].querySelector(".bar-label").textContent;
+
             bars[j].style.backgroundColor = "black";
             j -= 1;
         }
-
-        bars[j+1].style.height = `${curr_bar_height}px`;
-        bars[j+1].querySelector(".bar-label").textContent = curr_bar_height;
+        bars[j+1].style.height = `${key_bar_height}px`;
+        bars[j+1].querySelector(".bar-label").textContent = key_bar_textcontent;
     }
 }
 
