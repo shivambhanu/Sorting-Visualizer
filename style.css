@@ -12,7 +12,7 @@ body {
 #array-container {
     display: flex;
     justify-content: center;
-    align-items: flex-end; /* Align items to the bottom */
+    align-items: flex-end; /* Align bars to the bottom */
     margin-top: 20px;
 }
 

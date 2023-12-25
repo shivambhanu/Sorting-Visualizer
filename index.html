@@ -18,12 +18,17 @@
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-                    <li class="nav-item m-2">
-                        <button class="btn btn-sm btn-outline-secondary" onclick="generateArray()" type="button">Generate-Array</button>
+                    <li class="nav-item">
+                        <label for="size" class="form-label">Array-Size:</label>
+                        <input type="range" class="form-range" min="2" max="50" id="size">
                     </li>
 
                     <li class="nav-item m-2">
-                        <button class="btn btn-sm btn-outline-secondary" onclick="bubbleSort()" type="button">Bubble-Sort</button>
+                        <button class="btn btn-sm" onclick="generateArray()" type="button">Generate-Array</button>
+                    </li>
+
+                    <li class="nav-item m-2">
+                        <button class="btn btn-sm" onclick="bubbleSort()" type="button">Bubble-Sort</button>
                     </li>
                   
                 </ul>
@@ -31,7 +36,11 @@
             </div>
           </nav>
 
-        <div id="array-container"></div>
+        <div id="array-container" class="mt-5"></div>
+
+        <div>
+          <h2></h2>
+        </div>
     </div>
     <script src="script.js"></script>
     <!-- Bootstrapp CDN -->

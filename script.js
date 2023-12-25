@@ -8,7 +8,7 @@ function generateArray(){
     arrayContainer.innerHTML = "";
 
     const array = [];
-    for(let i = 0; i < 20; i++){
+    for(let i = 0; i < 30; i++){
         array.push(randomInt(10, 300));
     }
 
@@ -34,7 +34,7 @@ async function bubbleSort(){
             bar1.style.backgroundColor = "red";
             bar2.style.backgroundColor = "red";
 
-            await new Promise(resolve => setTimeout(resolve, 20));
+            await new Promise(resolve => setTimeout(resolve, 15));
 
             const height1 = parseInt(bar1.style.height);
             const height2 = parseInt(bar2.style.height);
