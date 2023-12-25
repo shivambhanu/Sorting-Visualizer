@@ -11,12 +11,12 @@ function generateArray(){
 
     const array = [];
     for(let i = 0; i < size; i++){
-        array.push(randomInt(10, 300));
+        array.push(randomInt(10, 100));
     }
 
     for(let i = 0; i < array.length; i++){
         const bar = document.createElement("div");
-        bar.style.height = `${array[i]}px`;
+        bar.style.height = `${array[i] * 4}px`;
         bar.className = "bar";
         
         const bar_label = document.createElement("div");
@@ -29,7 +29,7 @@ function generateArray(){
 }
 
 
-async function bubbleSort(){
+async function bubbleSort() {
     const arrayContainer = document.getElementById("array-container");
     const bars = arrayContainer.children;
 
@@ -62,6 +62,42 @@ async function bubbleSort(){
         }
     }
 }
+
+
+async function insertionSort() {
+    const arrayContainer = document.getElementById("array-container");
+    const bars = arrayContainer.children;
+
+    for(let i = 1; i < bars.length; i++) {
+        let j = i - 1;
+
+        const curr_bar = bars[i];
+        bars[i].style.backgroundColor = "red";
+        const curr_bar_height = parseInt(curr_bar.style.height);
+
+        while(j >= 0 && curr_bar_height < parseInt(bars[j].style.height)) {
+            let prev_bar_height = parseInt(bars[j].style.height);
+            bars[j+1].style.backgroundColor = "green";
+            bars[j].style.backgroundColor = "green";
+
+            let speed = document.getElementById("speed-input").value;
+            await new Promise(resolve => setTimeout(resolve, 100-speed))
+            bars[j+1].style.height = `${prev_bar_height}px`;
+
+            //Changing bar-labels
+            // bars[j+1].querySelector(".bar-label").textContent = bars[j].querySelector(".bar-label").textContent
+            bars[j+1].style.backgroundColor = "black";
+            bars[j].style.backgroundColor = "black";
+            j -= 1;
+        }
+
+        bars[j+1].style.height = `${curr_bar_height}px`;
+        bars[j+1].querySelector(".bar-label").textContent = curr_bar_height;
+    }
+}
+
+
+
 
 
 
