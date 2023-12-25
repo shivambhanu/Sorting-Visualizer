@@ -36,7 +36,8 @@ async function bubbleSort(){
             bar1.style.backgroundColor = "red";
             bar2.style.backgroundColor = "red";
 
-            await new Promise(resolve => setTimeout(resolve, 15));
+            let speed = document.getElementById("sort-speed").value;
+            await new Promise(resolve => setTimeout(resolve, 100-speed));
 
             const height1 = parseInt(bar1.style.height);
             const height2 = parseInt(bar2.style.height);
