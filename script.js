@@ -121,8 +121,8 @@ async function selectionSort() {
 }
 
 
-async function quickSort(bars, start, end) {
 
+async function quickSort(bars, start, end) {
     if(start < end){
         // bars[end].style.backgroundColor = "red";
         let temp_idx = start;  //This won't be zero. Don't do that mistake.
@@ -158,14 +158,13 @@ async function quickSort(bars, start, end) {
         quickSort(bars, start, temp_idx - 1);
         quickSort(bars, temp_idx + 1, end);
     }
-
 }
-
 function quickSortDriverFunc() {
     const arrayContainer = document.getElementById("array-container");
     const bars = arrayContainer.children;
     quickSort(bars, 0, bars.length-1);
 }
+
 
 
 
