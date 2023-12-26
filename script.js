@@ -128,8 +128,10 @@ async function quickSort(bars, start, end) {
         let temp_idx = start;  //This won't be zero. Don't do that mistake.
         for(let i = start; i < end; i++){
             bars[i].style.backgroundColor = "red";
+
             let speed = document.getElementById("speed-input").value;
             await new Promise(resolve => (setTimeout(resolve, 100-speed)));
+            
             if(parseInt(bars[i].style.height) <= parseInt(bars[end].style.height)){
                 //swapping time
                 const temp_height = bars[temp_idx].style.height;
@@ -163,6 +165,71 @@ function quickSortDriverFunc() {
     const arrayContainer = document.getElementById("array-container");
     const bars = arrayContainer.children;
     quickSort(bars, 0, bars.length-1);
+}
+
+
+//Merger-Sort algorithm
+async function combineBars(bars, start, end) {
+    let helperArr = [];
+    const mid = Math.floor((start + end) / 2);
+    let i = start;
+    let j = mid + 1;
+
+    while(i <= mid && j <= end) {
+        if(parseInt(bars[i].style.height) <= parseInt(bars[j].style.height)){
+            helperArr.push(bars[i].style.height);
+            i += 1;
+        }else{
+            helperArr.push(bars[j].style.height);
+            j += 1;
+        }
+    }
+
+    while(i <= mid){
+        helperArr.push(bars[i].style.height);
+        i += 1;
+    }
+
+    while(j <= end){
+        helperArr.push(bars[j].style.height);
+        j += 1;
+    }
+
+    const speed = document.getElementById("speed-input").value;
+    let itr = 0;
+    for(let k = start; k <= end; k++){
+        bars[k].style.backgroundColor = "red";
+
+        bars[k].style.height = helperArr[itr];
+        itr += 1;
+
+        await new Promise(resolve => (setTimeout(resolve, 100-speed)));
+        bars[k].style.backgroundColor = "black";
+    }
+
+}
+
+function mergeSort(bars, start, end) {
+    if(start < end){
+        const mid = Math.floor((start + end) / 2);
+
+        mergeSort(bars, start, mid);
+        mergeSort(bars, mid+1, end);
+        combineBars(bars, start, end);
+    }
+}
+
+function mergeSortDriverFunc() {
+    const arrayContainer = document.getElementById("array-container");
+    const bars = arrayContainer.children;
+    for(let i = 0; i < bars.length; i++){
+        console.log(bars[i].style.height);
+    }
+    mergeSort(bars, 0, bars.length-1);
+    console.log("===============================");
+    for(let i = 0; i < bars.length; i++){
+        console.log(bars[i].style.height);
+    }
 }
 
 
