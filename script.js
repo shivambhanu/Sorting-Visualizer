@@ -121,6 +121,53 @@ async function selectionSort() {
 }
 
 
+async function quickSort(bars, start, end) {
+
+    if(start < end){
+        // bars[end].style.backgroundColor = "red";
+        let temp_idx = start;  //This won't be zero. Don't do that mistake.
+        for(let i = start; i < end; i++){
+            bars[i].style.backgroundColor = "red";
+            let speed = document.getElementById("speed-input").value;
+            await new Promise(resolve => (setTimeout(resolve, 100-speed)));
+            if(parseInt(bars[i].style.height) <= parseInt(bars[end].style.height)){
+                //swapping time
+                const temp_height = bars[temp_idx].style.height;
+                bars[temp_idx].style.height = bars[i].style.height;
+                bars[i].style.height = temp_height;
+
+                //swapping bar-labels
+                const temp_text = bars[temp_idx].querySelector(".bar-label").textContent;
+                bars[temp_idx].querySelector(".bar-label").textContent = bars[i].querySelector(".bar-label").textContent;
+                bars[i].querySelector(".bar-label").textContent = temp_text;
+
+                temp_idx += 1;
+            }
+            bars[i].style.backgroundColor = "black";
+        }
+        //last swap
+        const temp_height = bars[temp_idx].style.height;
+        bars[temp_idx].style.height = bars[end].style.height;
+        bars[end].style.height = temp_height;
+
+        //last bar-label swap
+        const temp_text = bars[temp_idx].querySelector(".bar-label").textContent;
+        bars[temp_idx].querySelector(".bar-label").textContent = bars[end].querySelector(".bar-label").textContent;
+        bars[end].querySelector(".bar-label").textContent = temp_text;
+
+        quickSort(bars, start, temp_idx - 1);
+        quickSort(bars, temp_idx + 1, end);
+    }
+
+}
+
+function quickSortDriverFunc() {
+    const arrayContainer = document.getElementById("array-container");
+    const bars = arrayContainer.children;
+    quickSort(bars, 0, bars.length-1);
+}
+
+
 
 
 
