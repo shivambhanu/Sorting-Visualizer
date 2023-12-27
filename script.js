@@ -169,66 +169,58 @@ function quickSortDriverFunc() {
 
 
 //Merge-Sort algorithm
-async function combineBars(bars, start, end, allowed_to_combine) {
-    if(allowed_to_combine){
-        let helperArr = [];
-        const mid = Math.floor((start + end) / 2);
-        let i = start;
-        let j = mid + 1;
+async function combineBars(bars, start, end) {
+    let helperArr = [];
+    const mid = Math.floor((start + end) / 2);
+    let i = start;
+    let j = mid + 1;
 
-        while(i <= mid && j <= end) {
-            if(parseInt(bars[i].style.height) <= parseInt(bars[j].style.height)){
-                helperArr.push(bars[i].style.height);
-                i += 1;
-            }else{
-                helperArr.push(bars[j].style.height);
-                j += 1;
-            }
-        }
-
-        while(i <= mid){
+    while(i <= mid && j <= end) {
+        if(parseInt(bars[i].style.height) <= parseInt(bars[j].style.height)){
             helperArr.push(bars[i].style.height);
             i += 1;
-        }
-
-        while(j <= end){
+        }else{
             helperArr.push(bars[j].style.height);
             j += 1;
         }
-
-
-        //Add animation while merging both parts
-        for(let i = start, j = 0; i <= end; i++, j++){
-            bars[i].style.backgroundColor = "red";
-
-            let speed = document.getElementById("speed-input").value;
-            await new Promise(resolve => (setTimeout(resolve, 100-speed)));
-            bars[i].style.height = helperArr[j];
-
-            bars[i].style.backgroundColor="black";
-        }
     }
-    
+
+    while(i <= mid){
+        helperArr.push(bars[i].style.height);
+        i += 1;
+    }
+
+    while(j <= end){
+        helperArr.push(bars[j].style.height);
+        j += 1;
+    }
+
+    //Add animation while merging both parts
+    for(let i = start, j = 0; i <= end; i++, j++){
+        bars[i].style.backgroundColor = "red";
+
+        const speed = document.getElementById("speed-input").value;
+        await new Promise(resolve => (setTimeout(resolve, 100-speed)));
+
+        bars[i].style.height = helperArr[j];
+        bars[i].style.backgroundColor = "black";
+    }
 }
 
-function mergeSort(bars, start, end) {
+async function mergeSort(bars, start, end) {
     if(start < end){
         const mid = Math.floor((start + end) / 2);
         
-        // let allowed_to_combine = false;
-
-        mergeSort(bars, start, mid);
-        mergeSort(bars, mid+1, end);
-
-        // allowed_to_combine = true;
-        combineBars(bars, start, end, false);  //async function
+        await mergeSort(bars, start, mid);
+        await mergeSort(bars, mid+1, end);
+        await combineBars(bars, start, end);  //async function
     }
 }
 
-function mergeSortDriverFunc() {
+async function mergeSortDriverFunc() {
     const arrayContainer = document.getElementById("array-container");
     const bars = arrayContainer.children;
-    mergeSort(bars, 0, bars.length-1);
+    await mergeSort(bars, 0, bars.length-1);
 }
 
 
