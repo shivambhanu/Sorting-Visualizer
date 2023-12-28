@@ -170,7 +170,8 @@ function quickSortDriverFunc() {
 
 //Merge-Sort algorithm
 async function combineBars(bars, start, end) {
-    let helperArr = [];
+    const helperArr = [];
+    const textArr = [];
     const mid = Math.floor((start + end) / 2);
     let i = start;
     let j = mid + 1;
@@ -178,20 +179,24 @@ async function combineBars(bars, start, end) {
     while(i <= mid && j <= end) {
         if(parseInt(bars[i].style.height) <= parseInt(bars[j].style.height)){
             helperArr.push(bars[i].style.height);
+            textArr.push(bars[i].querySelector(".bar-label").textContent);
             i += 1;
         }else{
             helperArr.push(bars[j].style.height);
+            textArr.push(bars[j].querySelector(".bar-label").textContent);
             j += 1;
         }
     }
 
     while(i <= mid){
         helperArr.push(bars[i].style.height);
+        textArr.push(bars[i].querySelector(".bar-label").textContent);
         i += 1;
     }
 
     while(j <= end){
         helperArr.push(bars[j].style.height);
+        textArr.push(bars[j].querySelector(".bar-label").textContent);
         j += 1;
     }
 
@@ -203,6 +208,7 @@ async function combineBars(bars, start, end) {
         await new Promise(resolve => (setTimeout(resolve, 100-speed)));
 
         bars[i].style.height = helperArr[j];
+        bars[i].querySelector(".bar-label").textContent = textArr[j];
         bars[i].style.backgroundColor = "black";
     }
 }
