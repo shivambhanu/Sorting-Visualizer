@@ -7,9 +7,11 @@ body {
 
 .container {
     text-align: center;
+    
 }
 
 #array-container {
+    height: 450px;
     display: flex;
     justify-content: center;
     align-items: flex-end; /* Align bars to the bottom */
