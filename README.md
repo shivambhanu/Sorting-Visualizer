@@ -16,7 +16,7 @@ This project is a **Sorting Visualizer** built using **JavaScript, HTML, and CSS
 
 ## Demo
 
-[https://shivambhanu.github.io/Sorting-Visualizer/]
+https://shivambhanu.github.io/Sorting-Visualizer/
 
 ## Getting Started
 
